@@ -49,7 +49,7 @@ class Post extends Model implements Sortable
         $this->setTable(config('posts.tables.posts'));
     }
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('title')
