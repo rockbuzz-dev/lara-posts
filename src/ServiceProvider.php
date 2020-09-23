@@ -14,11 +14,11 @@ class ServiceProvider extends SupportServiceProvider
             DIRECTORY_SEPARATOR;
 
         if (! $this->hasMigrationInProject($projectPath, $filesystem)) {
-            $this->loadMigrationsFrom($localPath . '2020_09_23_000000_create_posts_tables.php');
+            $this->loadMigrationsFrom($localPath . '2020_09_23_000000_create_posts_table.php');
 
             $this->publishes([
-                $localPath . '2020_09_23_000000_create_posts_tables.php' =>
-                    $projectPath . now()->format('Y_m_d_his') . '_create_posts_tables.php'
+                $localPath . '2020_09_23_000000_create_posts_table.php' =>
+                    $projectPath . now()->format('Y_m_d_his') . '_create_posts_table.php'
             ], 'migrations');
         }
 
@@ -34,6 +34,6 @@ class ServiceProvider extends SupportServiceProvider
 
     private function hasMigrationInProject(string $path, Filesystem $filesystem)
     {
-        return count($filesystem->glob($path . '*_create_posts_tables.php')) > 0;
+        return count($filesystem->glob($path . '*_create_posts_table.php')) > 0;
     }
 }

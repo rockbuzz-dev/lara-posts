@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Rockbuzz\LaraPosts\Enums\{Status, Type};
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlogsTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
