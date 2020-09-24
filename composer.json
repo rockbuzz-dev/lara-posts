@@ -23,7 +23,7 @@
     "php": ">=7.2",
     "rockbuzz/lara-uuid": "^1.0",
     "bensampo/laravel-enum": "^1.0",
-    "spatie/eloquent-sortable": "^3.8",
+    "spatie/eloquent-sortable": "3.8.2",
     "spatie/laravel-sluggable": "^2.2"
   },
   "require-dev": {
