@@ -21,10 +21,10 @@
   },
   "require": {
     "php": ">=7.2",
-    "spatie/laravel-sluggable": "^2.1",
     "rockbuzz/lara-uuid": "^1.0",
     "bensampo/laravel-enum": "^1.0",
-    "spatie/eloquent-sortable": "^3.9"
+    "spatie/eloquent-sortable": "^3.8",
+    "spatie/laravel-sluggable": "^2.2"
   },
   "require-dev": {
     "phpunit/phpunit": "^8.0",
