@@ -5,6 +5,7 @@ namespace Rockbuzz\LaraPosts\Models;
 use Rockbuzz\LaraUuid\Traits\Uuid;
 use Spatie\Sluggable\{HasSlug, SlugOptions};
 use Rockbuzz\LaraPosts\Enums\{Status, Type};
+use Spatie\SchemalessAttributes\SchemalessAttributes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\EloquentSortable\{Sortable, SortableTrait};
 use Illuminate\Database\Eloquent\{Builder, Model, SoftDeletes};
@@ -54,6 +55,16 @@ class Post extends Model implements Sortable
         return SlugOptions::create()
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
+    }
+
+    public function getMetadataAttribute(): SchemalessAttributes
+    {
+        return SchemalessAttributes::createForModel($this, 'metadata');
+    }
+
+    public function scopeWithMetadata(): Builder
+    {
+        return SchemalessAttributes::scopeWithSchemalessAttributes('metadata');
     }
 
     public function author(): BelongsTo
