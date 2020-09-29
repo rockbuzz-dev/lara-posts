@@ -5,14 +5,14 @@ namespace Rockbuzz\LaraPosts\Models;
 use Rockbuzz\LaraUuid\Traits\Uuid;
 use Spatie\Sluggable\{HasSlug, SlugOptions};
 use Rockbuzz\LaraPosts\Enums\{Status, Type};
-use Spatie\SchemalessAttributes\SchemalessAttributes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\EloquentSortable\{Sortable, SortableTrait};
 use Illuminate\Database\Eloquent\{Builder, Model, SoftDeletes};
+use Spatie\SchemalessAttributes\{SchemalessAttributes, SchemalessAttributesTrait};
 
 class Post extends Model implements Sortable
 {
-    use Uuid, HasSlug, SortableTrait, SoftDeletes;
+    use Uuid, HasSlug, SortableTrait, SoftDeletes, SchemalessAttributesTrait;
 
     public $incrementing = false;
 

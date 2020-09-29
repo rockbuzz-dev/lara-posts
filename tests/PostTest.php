@@ -11,6 +11,7 @@ use Spatie\EloquentSortable\SortableTrait;
 use Rockbuzz\LaraPosts\Enums\{Status, Type};
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
 
 class PostTest extends TestCase
 {
@@ -54,7 +55,8 @@ class PostTest extends TestCase
                 Uuid::class,
                 HasSlug::class,
                 SortableTrait::class,
-                SoftDeletes::class
+                SoftDeletes::class,
+                SchemalessAttributesTrait::class
             ],
             array_values(class_uses(Post::class))
         );
