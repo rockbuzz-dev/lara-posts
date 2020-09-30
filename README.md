@@ -2,11 +2,11 @@
 
 Management of posts
 
-travis
+[![Build Status](https://travis-ci.org/rockbuzz/lara-posts.svg?branch=master)](https://travis-ci.org/rockbuzz/lara-posts)
 
 ## Requirements
 
-PHP: >=7.2
+PHP >=7.2
 
 ## Install
 
@@ -14,19 +14,41 @@ PHP: >=7.2
 $ composer require rockbuzz/lara-posts
 ```
 
-## Configuration
+```bash
+$ php artisan vendor:publish --provider="Rockbuzz\LaraPosts\ServiceProvider" --tag="migrations"
+```
 
 ```bash
-$ php artisan vendor:publish --provider="Rockbuzz\LaraPosts\ServiceProvider"
 $ php artisan migrate
+```
+
+## Config
+
+```bash
+$ php artisan vendor:publish --provider="Rockbuzz\LaraPosts\ServiceProvider" --tag="config"
+```
+
+```php
+<?php
+
+return [
+    'tables' => [
+        'posts' => 'posts',
+        'authors' => 'users'
+    ],
+    'route_key_name' => 'slug',
+    'models' => [
+        'post' => \Rockbuzz\LaraPosts\Models\Post::class,
+        'author' => \App\User::class,
+    ]
+];
 ```
 
 ## Usage
 
 ```php
 $post = \Rockbuzz\LaraPosts\Post::find(1);
-$post->slug: string
-$post->author(): BelongsTo //\App\User::class
+$post->author(): BelongsTo
 $post->isDraft(): bool
 $post->isModerate(): bool
 $post->isPublished(): bool

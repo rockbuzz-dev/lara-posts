@@ -5,7 +5,7 @@ return [
         'posts' => 'posts',
         'authors' => 'users'
     ],
-    'author_reference_uuid' => true,
+    'route_key_name' => 'slug',
     'models' => [
         'post' => \Rockbuzz\LaraPosts\Models\Post::class,
         'author' => \App\User::class,

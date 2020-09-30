@@ -14,9 +14,7 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        $columnType = config('posts.author_reference_uuid') ? 'uuid' : 'unsignedBigInteger';
-
-        Schema::create(config('posts.tables.posts'), function (Blueprint $table) use ($columnType) {
+        Schema::create(config('posts.tables.posts'), function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('title');
             $table->string('slug');
@@ -27,7 +25,7 @@ class CreatePostsTable extends Migration
             $table->string('type')->default(Type::ARTICLE);
             $table->json('metadata')->nullable();
             $table->string('order_column')->nullable();
-            $table->{$columnType}('author_id');
+            $table->uuid('author_id');
             $table->foreign('author_id')
                 ->references('id')
                 ->on(config('posts.tables.authors'))

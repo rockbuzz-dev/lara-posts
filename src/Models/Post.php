@@ -50,6 +50,11 @@ class Post extends Model implements Sortable
         $this->setTable(config('posts.tables.posts'));
     }
 
+    public function getRouteKeyName()
+    {
+        return config('posts.route_key_name');
+    }
+
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
