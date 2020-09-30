@@ -102,7 +102,7 @@ class Post extends Model implements Sortable
         return $this->type === Type::VIDEO;
     }
 
-    public function scopeDrafts($query): Builder
+    public function scopeDraft($query): Builder
     {
         return $query->whereStatus(Status::DRAFT);
     }

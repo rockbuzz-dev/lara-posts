@@ -106,13 +106,17 @@ class PostTest extends TestCase
         $post = factory(Post::class)->create(['status' => Status::DRAFT]);
 
         $this->assertTrue($post->isDraft());
+        $this->assertFalse($post->isModerate());
+        $this->assertFalse($post->isPublished());
     }
 
-    public function testItShouldBeIsSalved()
+    public function testItShouldBeIsModerate()
     {
         $post = factory(Post::class)->create(['status' => Status::MODERATE]);
 
         $this->assertTrue($post->isModerate());
+        $this->assertFalse($post->isDraft());
+        $this->assertFalse($post->isPublished());
     }
 
     public function testItShouldBeIsPublished()
@@ -120,18 +124,20 @@ class PostTest extends TestCase
         $post = factory(Post::class)->create(['status' => Status::PUBLISHED]);
 
         $this->assertTrue($post->isPublished());
+        $this->assertFalse($post->isModerate());
+        $this->assertFalse($post->isDraft());
     }
 
-    public function testItShouldHaveTwoItems()
+    public function testItShouldHaveTwoDraftItems()
     {
         factory(Post::class, 2)->create(['status' => Status::DRAFT]);
         factory(Post::class, 3)->create(['status' => Status::MODERATE]);
         factory(Post::class, 4)->create(['status' => Status::PUBLISHED]);
 
-        $this->assertEquals(2, Post::drafts()->count());
+        $this->assertEquals(2, Post::draft()->count());
     }
 
-    public function testItShouldHaveTreeItems()
+    public function testItShouldHaveTreeModerateItems()
     {
         factory(Post::class, 2)->create(['status' => Status::DRAFT]);
         factory(Post::class, 3)->create(['status' => Status::MODERATE]);
@@ -140,7 +146,7 @@ class PostTest extends TestCase
         $this->assertEquals(3, Post::moderate()->count());
     }
 
-    public function testItShouldHaveFourItems()
+    public function testItShouldHaveFourPublishedItems()
     {
         factory(Post::class, 2)->create(['status' => Status::DRAFT]);
         factory(Post::class, 3)->create(['status' => Status::MODERATE]);
@@ -154,6 +160,8 @@ class PostTest extends TestCase
         $post = factory(Post::class)->create(['type' => Type::ARTICLE]);
 
         $this->assertTrue($post->isArticle());
+        $this->assertFalse($post->isPodcast());
+        $this->assertFalse($post->isVideo());
     }
 
     public function testItShouldBeIsPodcast()
@@ -161,6 +169,8 @@ class PostTest extends TestCase
         $post = factory(Post::class)->create(['type' => Type::PODCAST]);
 
         $this->assertTrue($post->isPodcast());
+        $this->assertFalse($post->isArticle());
+        $this->assertFalse($post->isVideo());
     }
 
     public function testItShouldBeIsVideo()
@@ -168,6 +178,8 @@ class PostTest extends TestCase
         $post = factory(Post::class)->create(['type' => Type::VIDEO]);
 
         $this->assertTrue($post->isVideo());
+        $this->assertFalse($post->isPodcast());
+        $this->assertFalse($post->isArticle());
     }
 
     public function testItShouldHaveTwoItemsArticles()

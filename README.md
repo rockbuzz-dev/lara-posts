@@ -34,7 +34,7 @@ $post->isArticle(): bool
 $post->isPodcast(): bool
 $post->isVideo(): bool
 //scopes
-$post->drafts(): Builder
+$post->draft(): Builder
 $post->moderate(): Builder
 $post->published(): Builder
 $post->articles(): Builder
