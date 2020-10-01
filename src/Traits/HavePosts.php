@@ -2,7 +2,7 @@
 
 namespace Rockbuzz\LaraPosts\Traits;
 
-trait HasPosts
+trait HavePosts
 {
     public function posts()
     {

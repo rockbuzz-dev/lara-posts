@@ -6,7 +6,7 @@ use Tests\Stubs\Author;
 use Rockbuzz\LaraPosts\Models\Post;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class HasPostsTest extends TestCase
+class HavePostsTest extends TestCase
 {
 
     public function setUp(): void
@@ -16,7 +16,7 @@ class HasPostsTest extends TestCase
         $this->withFactories(__DIR__ . '/database/factories');
     }
 
-    public function testAAuthorHasPosts()
+    public function testAAuthorCanHavePosts()
     {
         $author = factory(Author::class)->create();
 

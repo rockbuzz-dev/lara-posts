@@ -2,7 +2,6 @@
 
 return [
     'tables' => [
-        'posts' => 'posts',
         'authors' => 'users'
     ],
     'route_key_name' => 'slug',

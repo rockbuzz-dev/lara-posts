@@ -4,11 +4,11 @@ namespace Tests\Stubs;
 
 use Rockbuzz\LaraUuid\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
-use Rockbuzz\LaraPosts\Traits\HasPosts;
+use Rockbuzz\LaraPosts\Traits\HavePosts;
 
 class Author extends Model
 {
-    use Uuid, HasPosts;
+    use Uuid, HavePosts;
 
     public $incrementing = false;
 }

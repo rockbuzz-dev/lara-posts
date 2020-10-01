@@ -14,7 +14,7 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('posts.tables.posts'), function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('title');
             $table->string('slug');
@@ -30,7 +30,7 @@ class CreatePostsTable extends Migration
                 ->references('id')
                 ->on(config('posts.tables.authors'))
                 ->onDelete('cascade');
-            $table->timestamp('published_at')->default(now());
+            $table->timestamp('published_at')->useCurrent();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -43,6 +43,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('posts.tables.posts'));
+        Schema::dropIfExists('posts');
     }
 }

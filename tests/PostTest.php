@@ -182,31 +182,31 @@ class PostTest extends TestCase
         $this->assertFalse($post->isArticle());
     }
 
-    public function testItShouldHaveTwoItemsArticles()
+    public function testItShouldHaveTwoItemsArticle()
     {
         factory(Post::class, 2)->create(['type' => Type::ARTICLE]);
         factory(Post::class, 3)->create(['type' => Type::PODCAST]);
         factory(Post::class, 4)->create(['type' => Type::VIDEO]);
 
-        $this->assertEquals(2, Post::articles()->count());
+        $this->assertEquals(2, Post::article()->count());
     }
 
-    public function testItShouldHaveTreeItemsPodcasts()
+    public function testItShouldHaveTreeItemsPodcast()
     {
         factory(Post::class, 2)->create(['type' => Type::ARTICLE]);
         factory(Post::class, 3)->create(['type' => Type::PODCAST]);
         factory(Post::class, 4)->create(['type' => Type::VIDEO]);
 
-        $this->assertEquals(3, Post::podcasts()->count());
+        $this->assertEquals(3, Post::podcast()->count());
     }
 
-    public function testItShouldHaveFourItemsVideos()
+    public function testItShouldHaveFourItemsVideo()
     {
         factory(Post::class, 2)->create(['type' => Type::ARTICLE]);
         factory(Post::class, 3)->create(['type' => Type::PODCAST]);
         factory(Post::class, 4)->create(['type' => Type::VIDEO]);
 
-        $this->assertEquals(4, Post::videos()->count());
+        $this->assertEquals(4, Post::video()->count());
     }
 
     public function testItShouldHaveLatestPublishedItems()

@@ -43,13 +43,6 @@ class Post extends Model implements Sortable
         'published_at'
     ];
 
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-
-        $this->setTable(config('posts.tables.posts'));
-    }
-
     public function getRouteKeyName()
     {
         return config('posts.route_key_name');
@@ -122,17 +115,17 @@ class Post extends Model implements Sortable
         return $query->whereStatus(Status::PUBLISHED);
     }
 
-    public function scopeArticles($query): Builder
+    public function scopeArticle($query): Builder
     {
         return $query->whereType(Type::ARTICLE);
     }
 
-    public function scopePodcasts($query): Builder
+    public function scopePodcast($query): Builder
     {
         return $query->whereType(Type::PODCAST);
     }
 
-    public function scopeVideos($query): Builder
+    public function scopeVideo($query): Builder
     {
         return $query->whereType(Type::VIDEO);
     }
