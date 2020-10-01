@@ -82,6 +82,26 @@ Post::videos(): Builder
 Post::latestPublished(): Builder
 ```
 
+## Use Your Model
+
+```php
+
+namespace App;
+
+use Rockbuzz\LaraPosts\Models\Post;
+
+class YourPost extends Post
+{
+    //
+}
+
+//set in the configuration file
+'models' => [
+    'post' => \App\YourPost::class,
+    //
+]
+```
+
 ## License
 
 The Lara Posts is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
