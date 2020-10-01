@@ -8,5 +8,5 @@ final class Status extends Enum
 {
     const DRAFT = 1;
     const MODERATE = 5;
-    const PUBLISHED = 9;
+    const APPROVED = 9;
 }

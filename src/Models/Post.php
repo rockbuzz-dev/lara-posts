@@ -80,9 +80,14 @@ class Post extends Model implements Sortable
         return $this->status === Status::MODERATE;
     }
 
-    public function isPublished(): bool
+    public function isApproved(): bool
     {
-        return $this->status === Status::PUBLISHED;
+        return $this->status === Status::APPROVED;
+    }
+
+    public function isPublished()
+    {
+        return $this->isApproved() && $this->published_at <= now();
     }
 
     public function isArticle(): bool
@@ -110,9 +115,15 @@ class Post extends Model implements Sortable
         return $query->whereStatus(Status::MODERATE);
     }
 
+    public function scopeApproved($query): Builder
+    {
+        return $query->whereStatus(Status::APPROVED);
+    }
+
     public function scopePublished($query): Builder
     {
-        return $query->whereStatus(Status::PUBLISHED);
+        return $query->where('published_at', '<=', now())
+            ->where('status', Status::APPROVED);
     }
 
     public function scopeArticle($query): Builder
@@ -132,6 +143,6 @@ class Post extends Model implements Sortable
 
     public function scopeLatestPublished($query): Builder
     {
-        return $query->whereStatus(Status::PUBLISHED)->orderBy('published_at');
+        return $query->whereStatus(Status::APPROVED)->orderBy('published_at');
     }
 }

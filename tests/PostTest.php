@@ -121,7 +121,7 @@ class PostTest extends TestCase
 
     public function testItShouldBeIsPublished()
     {
-        $post = factory(Post::class)->create(['status' => Status::PUBLISHED]);
+        $post = factory(Post::class)->create(['status' => Status::APPROVED]);
 
         $this->assertTrue($post->isPublished());
         $this->assertFalse($post->isModerate());
@@ -132,7 +132,7 @@ class PostTest extends TestCase
     {
         factory(Post::class, 2)->create(['status' => Status::DRAFT]);
         factory(Post::class, 3)->create(['status' => Status::MODERATE]);
-        factory(Post::class, 4)->create(['status' => Status::PUBLISHED]);
+        factory(Post::class, 4)->create(['status' => Status::APPROVED]);
 
         $this->assertEquals(2, Post::draft()->count());
     }
@@ -141,7 +141,7 @@ class PostTest extends TestCase
     {
         factory(Post::class, 2)->create(['status' => Status::DRAFT]);
         factory(Post::class, 3)->create(['status' => Status::MODERATE]);
-        factory(Post::class, 4)->create(['status' => Status::PUBLISHED]);
+        factory(Post::class, 4)->create(['status' => Status::APPROVED]);
 
         $this->assertEquals(3, Post::moderate()->count());
     }
@@ -150,9 +150,16 @@ class PostTest extends TestCase
     {
         factory(Post::class, 2)->create(['status' => Status::DRAFT]);
         factory(Post::class, 3)->create(['status' => Status::MODERATE]);
-        factory(Post::class, 4)->create(['status' => Status::PUBLISHED]);
+        factory(Post::class, 4)->create([
+            'status' => Status::APPROVED, 
+            'published_at' => now()->addMinute()
+        ]);
+        factory(Post::class, 5)->create([
+            'status' => Status::APPROVED, 
+            'published_at' => now()->subMinute()
+        ]);
 
-        $this->assertEquals(4, Post::published()->count());
+        $this->assertEquals(5, Post::published()->count());
     }
 
     public function testItShouldBeIsArticle()
@@ -212,15 +219,15 @@ class PostTest extends TestCase
     public function testItShouldHaveLatestPublishedItems()
     {
         $post1 = factory(Post::class)->create([
-            'status' => Status::PUBLISHED,
+            'status' => Status::APPROVED,
             'published_at' => now()->subHours(1)
         ]);
         $post2 = factory(Post::class)->create([
-            'status' => Status::PUBLISHED,
+            'status' => Status::APPROVED,
             'published_at' => now()->subHours(2)
         ]);
         $post3 = factory(Post::class)->create([
-            'status' => Status::PUBLISHED,
+            'status' => Status::APPROVED,
             'published_at' => now()->subHours(3)
         ]);
         factory(Post::class, 2)->create([

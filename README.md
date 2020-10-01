@@ -75,6 +75,7 @@ Scope
 ```php
 Post::draft(): Builder
 Post::moderate(): Builder
+Post::approved(): Builder
 Post::published(): Builder
 Post::articles(): Builder
 Post::podcasts(): Builder
