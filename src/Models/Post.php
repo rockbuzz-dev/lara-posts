@@ -126,6 +126,13 @@ class Post extends Model implements Sortable
             ->where('status', Status::APPROVED);
     }
 
+    public function scopeScheduled($query): Builder
+    {
+        return $query->where('published_at', '>', now())
+            ->where('status', Status::APPROVED)
+            ->oldest('published_at');
+    }
+
     public function scopeArticle($query): Builder
     {
         return $query->whereType(Type::ARTICLE);

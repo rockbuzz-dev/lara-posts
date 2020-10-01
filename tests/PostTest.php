@@ -247,4 +247,28 @@ class PostTest extends TestCase
 
         $this->assertEquals($data, Post::latestPublished()->get()->pluck('title')->toArray());
     }
+
+    public function testItShouldHaveLatestScheduledItems()
+    {
+        $posts = factory(Post::class, 5)->create([
+            'status' => Status::APPROVED,
+            'published_at' => now()->subDay()
+        ]);
+        $post = factory(Post::class)->create([
+            'status' => Status::APPROVED,
+            'published_at' => now()->addDays(3)
+        ]);
+        factory(Post::class)->create([
+            'status' => Status::DRAFT,
+            'published_at' => now()->addDays(2)
+        ]);
+        factory(Post::class)->create([
+            'status' => Status::MODERATE,
+            'published_at' => now()->addDays(1)
+        ]);
+        $this->assertTrue(Post::scheduled()->get()->contains($post));
+        $posts->each(function ($post) {
+            $this->assertFalse(Post::scheduled()->get()->contains($post));
+        });
+    }
 }
