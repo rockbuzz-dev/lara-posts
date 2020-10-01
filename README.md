@@ -46,7 +46,23 @@ return [
 ## Usage
 
 ```php
-$post = \Rockbuzz\LaraPosts\Post::find(1);
+use Illuminate\Database\Eloquent\Model;
+use Rockbuzz\LaraPosts\Traits\HavePosts;
+
+class User extends Model
+{
+    use HavePosts;
+    //
+}
+
+$author = User::find(1);
+$author->posts(): HasMany
+```
+
+```php
+use Rockbuzz\LaraPosts\Models\Post;
+
+$post = Post::find('uuid');
 $post->author(): BelongsTo
 $post->isDraft(): bool
 $post->isModerate(): bool
@@ -54,14 +70,16 @@ $post->isPublished(): bool
 $post->isArticle(): bool
 $post->isPodcast(): bool
 $post->isVideo(): bool
-//scopes
-$post->draft(): Builder
-$post->moderate(): Builder
-$post->published(): Builder
-$post->articles(): Builder
-$post->podcasts(): Builder
-$post->videos(): Builder
-$post->latestPublished(): Builder
+```
+Scope
+```php
+Post::draft(): Builder
+Post::moderate(): Builder
+Post::published(): Builder
+Post::articles(): Builder
+Post::podcasts(): Builder
+Post::videos(): Builder
+Post::latestPublished(): Builder
 ```
 
 ## License
