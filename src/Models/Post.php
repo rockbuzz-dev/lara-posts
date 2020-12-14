@@ -2,7 +2,6 @@
 
 namespace Rockbuzz\LaraPosts\Models;
 
-use Rockbuzz\LaraUuid\Traits\Uuid;
 use Spatie\Sluggable\{HasSlug, SlugOptions};
 use Rockbuzz\LaraPosts\Enums\{Status, Type};
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,11 +11,7 @@ use Spatie\SchemalessAttributes\{SchemalessAttributes, SchemalessAttributesTrait
 
 class Post extends Model implements Sortable
 {
-    use Uuid, HasSlug, SortableTrait, SoftDeletes, SchemalessAttributesTrait;
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
+    use HasSlug, SortableTrait, SoftDeletes, SchemalessAttributesTrait;
 
     protected $fillable = [
         'title',
@@ -33,7 +28,6 @@ class Post extends Model implements Sortable
     ];
 
     protected $casts = [
-        'id' => 'string',
         'metadata' => 'array',
         'status' => 'int',
         'type' => 'int'

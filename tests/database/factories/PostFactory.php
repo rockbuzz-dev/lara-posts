@@ -13,7 +13,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'slug' => Str::slug($title),
         'description' => $faker->sentence,
         'body' => $faker->text(500),
-        'view' => random_int(0,100),
+        'view' => random_int(0, 100),
         'status' => Status::DRAFT,
         'type' => Type::ARTICLE,
         'metadata' => null,

@@ -4,7 +4,6 @@ namespace Tests;
 
 use Tests\Stubs\Author;
 use Spatie\Sluggable\HasSlug;
-use Rockbuzz\LaraUuid\Traits\Uuid;
 use Rockbuzz\LaraPosts\Models\Post;
 use Illuminate\Support\Facades\Config;
 use Spatie\EloquentSortable\SortableTrait;
@@ -38,8 +37,8 @@ class PostTest extends TestCase
             'body',
             'view',
             'status',
-            'type', 
-            'metadata', 
+            'type',
+            'metadata',
             'order_column',
             'author_id',
             'published_at'
@@ -52,7 +51,6 @@ class PostTest extends TestCase
     {
         $this->assertEquals(
             [
-                Uuid::class,
                 HasSlug::class,
                 SortableTrait::class,
                 SoftDeletes::class,
@@ -65,10 +63,10 @@ class PostTest extends TestCase
     public function testCasts()
     {
         $this->assertEquals([
-            'id' => 'string',
             'metadata' => 'array',
             'status' => 'int',
-            'type' => 'int'
+            'type' => 'int',
+            'id' => 'int'
         ], $this->post->getCasts());
     }
 
@@ -76,10 +74,10 @@ class PostTest extends TestCase
     {
         $this->assertEquals(
             array_values([
-                'published_at', 
+                'published_at',
                 'deleted_at',
                 'created_at',
-                'updated_at', 
+                'updated_at',
             ]),
             array_values($this->post->getDates())
         );
@@ -151,11 +149,11 @@ class PostTest extends TestCase
         factory(Post::class, 2)->create(['status' => Status::DRAFT]);
         factory(Post::class, 3)->create(['status' => Status::MODERATE]);
         factory(Post::class, 4)->create([
-            'status' => Status::APPROVED, 
+            'status' => Status::APPROVED,
             'published_at' => now()->addMinute()
         ]);
         factory(Post::class, 5)->create([
-            'status' => Status::APPROVED, 
+            'status' => Status::APPROVED,
             'published_at' => now()->subMinute()
         ]);
 
