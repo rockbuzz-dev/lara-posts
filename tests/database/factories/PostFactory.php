@@ -1,6 +1,6 @@
 <?php
 
-use Tests\Stubs\Author;
+use Tests\Models\Author;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 use Rockbuzz\LaraPosts\Models\Post;

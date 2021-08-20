@@ -10,7 +10,7 @@ class ServiceProvider extends SupportServiceProvider
     public function boot(Filesystem $filesystem)
     {
         $projectPath = database_path('migrations') . '/';
-        $localPath = __DIR__ . '/database/migrations/';
+        $localPath = __DIR__ . '/../database/migrations/';
 
         if (! $this->hasMigrationInProject($projectPath, $filesystem)) {
             $this->loadMigrationsFrom($localPath . '2020_09_23_000000_create_posts_table.php');
@@ -22,13 +22,13 @@ class ServiceProvider extends SupportServiceProvider
         }
 
         $this->publishes([
-            __DIR__ . '/config/posts.php' => config_path('posts.php')
+            __DIR__ . '/../config/posts.php' => config_path('posts.php')
         ], 'config');
     }
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/config/posts.php', 'posts');
+        $this->mergeConfigFrom(__DIR__ . '/../config/posts.php', 'posts');
     }
 
     private function hasMigrationInProject(string $path, Filesystem $filesystem)

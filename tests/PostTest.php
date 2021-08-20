@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Tests\Stubs\Author;
+use Tests\Models\Author;
 use Spatie\Sluggable\HasSlug;
 use Rockbuzz\LaraPosts\Models\Post;
 use Illuminate\Support\Facades\Config;

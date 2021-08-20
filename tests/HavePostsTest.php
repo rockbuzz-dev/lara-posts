@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Tests\Stubs\Author;
+use Tests\Models\Author;
 use Rockbuzz\LaraPosts\Models\Post;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
