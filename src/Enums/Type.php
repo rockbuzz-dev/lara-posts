@@ -2,9 +2,7 @@
 
 namespace Rockbuzz\LaraPosts\Enums;
 
-use BenSampo\Enum\Enum;
-
-final class Type extends Enum
+final class Type
 {
     const ARTICLE = 1;
     const PODCAST = 5;

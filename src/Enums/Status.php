@@ -2,9 +2,7 @@
 
 namespace Rockbuzz\LaraPosts\Enums;
 
-use BenSampo\Enum\Enum;
-
-final class Status extends Enum
+final class Status
 {
     const DRAFT = 1;
     const MODERATE = 5;
