@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "873ef2f395378998a6ba74cafe3d0c66",
+    "content-hash": "5dd864367330300c534dbf3186c81a88",
     "packages": [
         {
             "name": "bensampo/laravel-enum",
@@ -1864,20 +1864,20 @@
         },
         {
             "name": "rockbuzz/lara-uuid",
-            "version": "1.0.3",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rockbuzz/lara-uuid.git",
-                "reference": "bf73870bd3e08e9bfa74af64169d56a0c80a135e"
+                "reference": "aa4f4561075a15524a3b0aacf95526a3bb8497ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rockbuzz/lara-uuid/zipball/bf73870bd3e08e9bfa74af64169d56a0c80a135e",
-                "reference": "bf73870bd3e08e9bfa74af64169d56a0c80a135e",
+                "url": "https://api.github.com/repos/rockbuzz/lara-uuid/zipball/aa4f4561075a15524a3b0aacf95526a3bb8497ef",
+                "reference": "aa4f4561075a15524a3b0aacf95526a3bb8497ef",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2"
+                "php": "^7.3"
             },
             "require-dev": {
                 "orchestra/testbench": "^4.0",
@@ -1902,12 +1902,12 @@
             ],
             "authors": [
                 {
-                    "name": "TiagoDevWeb",
-                    "email": "tiago.desenvolvedorweb@gmail.com"
+                    "name": "Tiago Lopes",
+                    "email": "tiago@rockbuzz.com.br"
                 },
                 {
                     "name": "Paulo Henrique P. Scheuermann",
-                    "email": "paetzold44@gmail.com"
+                    "email": "paulo@rockbuzz.com.br"
                 }
             ],
             "description": "Laravel Uuid",
@@ -1917,9 +1917,9 @@
             ],
             "support": {
                 "issues": "https://github.com/rockbuzz/lara-uuid/issues",
-                "source": "https://github.com/rockbuzz/lara-uuid/tree/1.0.3"
+                "source": "https://github.com/rockbuzz/lara-uuid/tree/2.0.1"
             },
-            "time": "2021-01-29T18:59:14+00:00"
+            "time": "2021-07-12T14:29:04+00:00"
         },
         {
             "name": "spatie/eloquent-sortable",
